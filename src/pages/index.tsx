@@ -42,6 +42,9 @@ const IndexPage = () => {
             className={photo}
             alt="Shaun Czubkowski"
             src="../images/shaunczubkowski.jpg"
+            layout="fixed"
+            width={300}
+            height={425}
           />
         </div>
         <div className="contactContainer">
