@@ -2,14 +2,15 @@ import * as React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
+import { blogTitle } from "./index.module.css"
 
 const BlogPage = ({ data }) => {
   return (
-    <Layout pageTitle="My Blog Posts">
+    <Layout pageTitle="Blog">
       {data.allMdx.nodes.map((node) => (
         <article key={node.id}>
           <h2>
-            <Link to={`/blog/${node.frontmatter.slug}`}>
+            <Link to={`/blog/${node.frontmatter.slug}`} className={blogTitle}>
               {node.frontmatter.title}
             </Link>
           </h2>

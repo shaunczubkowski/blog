@@ -1,15 +1,17 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import {
+  copyRight,
+  connect,
   container,
+  contactLinks,
+  contactLinksText,
   heading,
   navLinks,
   navLinkItem,
   navLinkText,
-  siteHeader,
+  siteNav,
   siteTitle,
-  subTitleContainer,
-  subTitleText,
 } from "./layout.module.css";
 
 const Layout = ({ pageTitle, children }) => {
@@ -23,37 +25,55 @@ const Layout = ({ pageTitle, children }) => {
     }
   `);
 
+  const copyRightYear = new Date().getFullYear()
+
   return (
     <div className={container}>
-      <header className={siteHeader}>
+      <header>
         <div className={siteTitle}>{data.site.siteMetadata.title}</div>
-        <ul className={subTitleContainer}>
-          <li className={subTitleText}>Software Engineer</li>
-          <li className={subTitleText}>Cat Dad</li>
-          <li className={subTitleText}>Reader</li>
-        </ul>
+        <nav className={siteNav}>
+          <ul className={navLinks}>
+            <li className={navLinkItem}>
+              <Link to="/" className={navLinkText}>
+                Home
+              </Link>
+            </li>
+            <li className={navLinkItem}>
+              <Link to="/blog" className={navLinkText}>
+                Blog
+              </Link>
+            </li>
+          </ul>
+          <ul className={contactLinks}>
+            <li>
+              <Link
+                className={contactLinksText}
+                to="https://github.com/shaunczubkowski"
+                target="_blank"
+              >
+                GitHub
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={contactLinksText}
+                to="https://www.linkedin.com/in/shaun-czubkowski/"
+                target="_blank"
+              >
+                LinkedIn
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <hr />
       </header>
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/blog" className={navLinkText}>
-              Blog
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <hr />
       <main>
         <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
-      <hr />
-      <footer></footer>
+      <footer>
+        <p className={copyRight}>Copyright {copyRightYear} Shaun Czubkowski</p>
+      </footer>
     </div>
   );
 };
